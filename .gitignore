@@ -1,0 +1,8 @@
+peerLearn_backend/target/
+peerLearn_backend/.idea/
+peerLearn_backend/*.iml
+
+PeerLearn_frontend/.vscode/
+
+.DS_Store
+Thumbs.dbgit

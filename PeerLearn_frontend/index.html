@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerLearn — Skill Exchange</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <div class="logo">Peer<span>Learn</span></div>
+    <nav class="nav-links">
+    <a href="index.html" class="active"><span class="nav-icon">🧭</span>Browse</a>
+    <a href="post-skill.html"><span class="nav-icon">✏️</span>Post a Skill</a>
+    <a href="my-skills.html"><span class="nav-icon">📚</span>My Skills</a>
+    <a href="my-enrollments.html"><span class="nav-icon">🎓</span>My Enrollments</a>
+    <span class="account-chip" id="account-chip">Not signed in</span>
+    <a href="register.html" class="btn btn-outline" id="nav-signup-btn">Sign Up</a>
+    <button class="btn btn-outline" id="nav-logout-btn" onclick="logoutUser()" style="display:none;">Logout</button>
+</nav>
+        </div>
+    </header>
+
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <p class="eyebrow">Peer-to-peer learning</p>
+            <h1>Trade what you<br>know for what<br>you want to <span>learn.</span></h1>
+            <p class="hero-sub">Students teaching students. Post a skill you can share, or find someone who'll teach you the one you can't figure out alone.</p>
+            <div class="hero-actions">
+                <a href="#skills-section" class="btn btn-primary">Browse Skills</a>
+                <a href="post-skill.html" class="btn btn-outline">Post a Skill →</a>
+            </div>
+        </div>
+
+     <div class="hero-illustration" aria-hidden="true">
+    <div class="image-wrapper">
+        <img src="Gemini_Generated_Image_2m6smb2m6smb2m6s.jpg" alt="PeerLearn Mentor and Learner">
+        <div class="glass-card card-1">
+            <span class="icon">💡</span>
+            <div class="glass-text">
+                <h4>Skill Exchange</h4>
+                <p>Learn & Teach Live</p>
+            </div>
+        </div>
+        <div class="glass-card card-2">
+            <span class="icon">🤝</span>
+            <div class="glass-text">
+                <h4>Active Peers</h4>
+                <p>Connected on Campus</p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+
+    <div class="container">
+        <div class="stats-row">
+            <div><div class="stat-number" id="stat-skills">--</div><div class="stat-label">Skills Listed</div></div>
+            <div><div class="stat-number" id="stat-mentors">--</div><div class="stat-label">Active Mentors</div></div>
+        </div>
+    </div>
+
+    <section class="container quick-access">
+        <div class="quick-access-box">
+            <span>Already registered? Enter your User ID to continue:</span>
+            <div class="quick-access-input">
+                <input type="number" id="quick-user-id" placeholder="e.g. 4">
+                <button class="btn btn-outline" onclick="useExistingId()">Use this ID</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container" id="skills-section">
+        <section class="action-bar">
+            <input type="text" id="search-input" placeholder="Search skills — e.g. Python, UI Design...">
+            <button class="btn btn-outline" onclick="searchSkills()">Search</button>
+            <button class="btn btn-primary" onclick="loadSkills()">Show All</button>
+        </section>
+
+        <div class="section-heading">
+            <h2>Featured Skills</h2>
+            <span class="section-note">Live listings from mentors on campus</span>
+        </div>
+
+   <div id="skills-list" class="skills-grid">
+    <p class="empty-state">Loading skills...</p>
+</div>
+    </main>
+
+    <footer class="footer"><div class="container"><p>PeerLearn — built by a student, for students.</p></div></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

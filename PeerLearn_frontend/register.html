@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — PeerLearn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <div class="logo">Peer<span>Learn</span></div>
+       <nav class="nav-links">
+    <a href="index.html" class="nav-links-left active"><span class="nav-icon">🧭</span>Browse</a>
+    <div class="nav-links-right">
+        <a href="post-skill.html"><span class="nav-icon">✏️</span>Post a Skill</a>
+        <a href="my-skills.html"><span class="nav-icon">📚</span>My Skills</a>
+        <a href="my-enrollments.html"><span class="nav-icon">🎓</span>My Enrollments</a>
+        <span class="account-chip" id="account-chip">Not signed in</span>
+        <a href="register.html" class="btn btn-outline" id="nav-signup-btn">Sign Up</a>
+        <button class="btn btn-outline" id="nav-logout-btn" onclick="logoutUser()" style="display:none;">Logout</button>
+    </div>
+</nav>
+        </div>
+    </header>
+
+    <section class="form-page">
+        <div class="form-card">
+            <h2>Create your account</h2>
+            <p class="form-sub">Join as a mentor to teach, or a learner to find someone who can.</p>
+            <form onsubmit="event.preventDefault(); registerUser();">
+                <label>Full Name</label>
+                <input type="text" id="register-name" placeholder="e.g. Ali Raza" required>
+                <label>Email</label>
+                <input type="email" id="register-email" placeholder="you@example.com" required>
+                <label>I want to join as</label>
+                <select id="register-role" required>
+                    <option value="LEARNER">Learner — I want to learn a skill</option>
+                    <option value="MENTOR">Mentor — I want to teach a skill</option>
+                </select>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="container"><p>PeerLearn — built by a student, for students.</p></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>
