@@ -13,9 +13,9 @@ public class DBConnection {
 
     private static final String HOST = getEnv("DB_HOST", "localhost");
     private static final String PORT = getEnv("DB_PORT", "3306");
-    private static final String DB_NAME = getEnv("DB_NAME", "peerlearn");
+    private static final String DB_NAME = getEnv("DB_NAME", "peerLearner");
     private static final String USERNAME = getEnv("DB_USER", "root");
-    private static final String PASSWORD = getEnv("DB_PASSWORD", "Java123");
+    private static final String PASSWORD = getEnv("DB_PASSWORD", "Sanjutech12");
 
     private static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME;
 
