@@ -17,13 +17,14 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+        int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "7000"));
         Javalin app = Javalin.create(Config -> {
                 Config.plugins.enableCors(Cors ->{
                     Cors.add(it ->{
                         it.anyHost();
                     });
                 });
-        }).start(7000);
+        }).start(port);
         SkillDAO skillDAO = new SkillDAO();
         SkillService skillService = new SkillService();
         UserService userService = new UserService();
