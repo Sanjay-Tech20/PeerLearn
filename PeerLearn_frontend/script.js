@@ -45,10 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+const API_URL = "https://peerlearn-4y3k.onrender.com";
+
 
 async function useExistingId() {
     const id = document.getElementById('quick-user-id').value;
-    const response = await fetch(`http://localhost:7000/users/${id}`);
+    const response = await fetch(`${API_URL}/users/${id}`);
 
       if (response.ok) {
         const user = await response.json();
@@ -64,7 +66,7 @@ async function useExistingId() {
     const email = document.getElementById('register-email').value;
     const role = document.getElementById('register-role').value;
 
-    const response = await fetch(`http://localhost:7000/users`,{
+    const response = await fetch(`${API_URL}/users`,{
         method : 'POST',
         headers : {'Content-type' : 'application/json'},
         body : JSON.stringify({ name: name, email: email, role: role })
@@ -94,11 +96,11 @@ async function postSkillForm() {
     const description = document.getElementById('skill-description').value;
     const mentorId = currentUser.id;
 
-    let url = 'http://localhost:7000/skills';
+    let url = `${API_URL}/skills`;
     let method = 'POST';
 
     if (editingSkillId) {
-        url = `http://localhost:7000/skills/${editingSkillId}`;
+        url = `${API_URL}/${editingSkillId}`;
         method = 'PUT';
     }
 
@@ -118,7 +120,7 @@ async function postSkillForm() {
 }
 
 async function loadSkills() {
-    const response = await fetch('http://localhost:7000/skills');
+    const response = await fetch(`${API_URL}/skills`);
     const data = await response.json();
     renderSkills(data);
      updateStats(data);
@@ -139,7 +141,7 @@ function updateStats(data) {
 
 async function searchSkills() {
     const title = document.getElementById('search-input').value;
-    const response = await fetch(`http://localhost:7000/skills/search?title=${title}`);
+    const response = await fetch(`${API_URL}/skills/search?title=${title}`);
     const data = await response.json();
     renderSkills(data);
 }
@@ -178,7 +180,7 @@ async function enrollInSkill(skillId) {
     }
     const learner_id = currentUser.id;
     const skill_id = skillId;
-    const response = await fetch(`http://localhost:7000/enrollments`, {
+    const response = await fetch(`${API_URL}/enrollments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ learnerId: learner_id, skillId: skill_id })
@@ -204,7 +206,7 @@ async function loadMySkills() {
         return;
     }
 
-    const response = await fetch('http://localhost:7000/skills');
+    const response = await fetch(`${API_URL}/skills`);
     const allSkills = await response.json();
     const mySkills = allSkills.filter((skill) => skill.mentorId === currentUser.id);
     renderMySkills(mySkills);
@@ -263,7 +265,7 @@ async function loadMyEnrollments() {
         document.getElementById('enrollments-list').innerHTML = `<p class="empty-state">Only Learners can enroll in skills. Sign in with a Learner account.</p>`;
         return;
     }
-    const response = await fetch(`http://localhost:7000/enrollments/learner/${currentUser.id}`);
+    const response = await fetch(`${API_URL}/enrollments/learner/${currentUser.id}`);
     const data = await response.json();
     renderEnrollments(data);
 }
@@ -271,7 +273,7 @@ async function unenrollSkill(enrollmentId) {
     const confirmUnenroll = confirm("Are you sure you want to unenroll?");
     if (!confirmUnenroll) return;
 
-    const response = await fetch(`http://localhost:7000/enrollments/${enrollmentId}`, {
+    const response = await fetch(`${API_URL}/enrollments/${enrollmentId}`, {
         method: 'DELETE'
     });
 
@@ -284,7 +286,7 @@ async function unenrollSkill(enrollmentId) {
     }
 }
 async function viewLearners(skillId) {
-    const response = await  fetch(`http://localhost:7000/enrollments/skill/${skillId}`);
+    const response = await  fetch(`${API_URL}/enrollments/skill/${skillId}`);
     const data = await response.json();
     const box = document.getElementById(`learners-${skillId}`);
      if (data.length === 0) {
@@ -305,7 +307,7 @@ function checkEditMode() {
     }
 }
 async function prefillSkillForm(skillId) {
-    const response = await fetch(`http://localhost:7000/skills/${skillId}`);
+    const response = await fetch(`${API_URL}/skills/${skillId}`);
     const skill = await response.json();
 
 
